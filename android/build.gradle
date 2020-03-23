@@ -12,12 +12,12 @@ buildscript {
 apply plugin: 'com.android.library'
 
 android {
-    compileSdkVersion 23
+    compileSdkVersion 26
     buildToolsVersion "23.0.1"
 
     defaultConfig {
         minSdkVersion 16
-        targetSdkVersion 22
+        targetSdkVersion 26
         versionCode 1
         versionName "1.0"
     }
@@ -28,9 +28,15 @@ android {
 
 repositories {
     mavenCentral()
+    maven { url = "https://netfoundry.jfrog.io/netfoundry/ziti-maven" }
 }
 
 dependencies {
     compile 'com.facebook.react:react-native:+'
+
+    def zitiVer = "0.9.1"
+    implementation "io.netfoundry.ziti:ziti:${zitiVer}"
+    implementation "io.netfoundry.ziti:ziti-android:${zitiVer}@aar"
+
 }
   
