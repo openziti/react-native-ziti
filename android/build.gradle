@@ -28,15 +28,16 @@ android {
 
 repositories {
     mavenCentral()
-    maven { url = "https://netfoundry.jfrog.io/netfoundry/ziti-maven" }
+    jcenter()
+    maven { url = "https://bintray.com/openziti/maven/ziti" }
 }
 
 dependencies {
     compile 'com.facebook.react:react-native:+'
 
-    def zitiVer = "0.9.1"
-    implementation "io.netfoundry.ziti:ziti:${zitiVer}"
-    implementation "io.netfoundry.ziti:ziti-android:${zitiVer}@aar"
+    def zitiVer  = '0.13.15'
+    implementation "org.openziti:ziti:${zitiVer}"
+    implementation "org.openziti:ziti-android:${zitiVer}@aar"
 
 }
   

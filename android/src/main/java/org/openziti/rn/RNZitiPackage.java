@@ -1,5 +1,5 @@
 
-package io.netfoundry.ziti.rn;
+package org.openziti.rn;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -11,7 +11,7 @@ import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.uimanager.ViewManager;
 import com.facebook.react.bridge.JavaScriptModule;
 
-import io.netfoundry.ziti.android.Ziti;
+import org.openziti.android.Ziti;
 
 public class RNZitiPackage implements ReactPackage {
     @Override

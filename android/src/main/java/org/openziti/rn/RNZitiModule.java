@@ -1,5 +1,5 @@
 
-package io.netfoundry.ziti.rn;
+package org.openziti.rn;
 
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
@@ -20,7 +20,7 @@ import javax.net.ssl.SSLSocketFactory;
 import javax.net.ssl.TrustManagerFactory;
 import javax.net.ssl.X509TrustManager;
 
-import io.netfoundry.ziti.Ziti;
+import org.openziti.Ziti;
 import okhttp3.Dns;
 import okhttp3.OkHttpClient;
 
