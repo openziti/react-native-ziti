@@ -30,7 +30,6 @@ android {
 repositories {
     mavenCentral()
     jcenter()
-    maven { url = "https://bintray.com/openziti/maven/ziti" }
 }
 
 dependencies {
@@ -41,7 +40,7 @@ dependencies {
       transitive = true
     }
 
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:1.3.11"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:1.3.72"
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.7'
 
 }
