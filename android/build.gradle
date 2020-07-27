@@ -35,7 +35,7 @@ repositories {
 dependencies {
     implementation 'com.facebook.react:react-native:+'
 
-    def zitiVer  = '0.13.15'
+    def zitiVer  = '0.14.+'
     implementation("org.openziti:ziti-android:${zitiVer}@aar") {
       transitive = true
     }
