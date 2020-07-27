@@ -18,7 +18,7 @@ public class RNZitiPackage implements ReactPackage {
     public List<NativeModule> createNativeModules(ReactApplicationContext reactContext) {
         // we have to use seamless mode here to make React Native websockets module work
         // RN websockets does not use client factory override
-        Ziti.init(reactContext.getApplicationContext(), true);
+        Ziti.init(reactContext.getApplicationContext(), false);
 
         return Arrays.<NativeModule>asList(new RNZitiModule(reactContext));
     }
