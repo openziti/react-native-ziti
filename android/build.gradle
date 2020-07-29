@@ -35,14 +35,14 @@ repositories {
 dependencies {
     implementation 'com.facebook.react:react-native:+'
 
-    def zitiVer  = '0.14.+'
+    def zitiVer  = '0.14.1'
     implementation("org.openziti:ziti-android:${zitiVer}@aar") {
       transitive = true
     }
 
     implementation("com.noveogroup.android:android-logger:1.3.6")
     implementation "org.jetbrains.kotlin:kotlin-stdlib:1.3.72"
-    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.7'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.8'
 
 }
   
