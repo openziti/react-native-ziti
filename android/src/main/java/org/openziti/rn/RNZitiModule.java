@@ -1,14 +1,17 @@
 
-package io.netfoundry.ziti.rn;
+package org.openziti.rn;
+
+import android.util.Log;
 
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
-import com.facebook.react.bridge.ReactMethod;
-import com.facebook.react.bridge.Callback;
 import com.facebook.react.modules.network.OkHttpClientFactory;
 import com.facebook.react.modules.network.OkHttpClientProvider;
 import com.facebook.react.modules.network.ReactCookieJarContainer;
 
+import org.openziti.Ziti;
+
+import java.io.IOException;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.security.KeyStore;
@@ -20,9 +23,11 @@ import javax.net.ssl.SSLSocketFactory;
 import javax.net.ssl.TrustManagerFactory;
 import javax.net.ssl.X509TrustManager;
 
-import io.netfoundry.ziti.Ziti;
 import okhttp3.Dns;
+import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
 
 public class RNZitiModule extends ReactContextBaseJavaModule {
 
@@ -72,7 +77,18 @@ public class RNZitiModule extends ReactContextBaseJavaModule {
               .socketFactory(Ziti.getSocketFactory())
               .sslSocketFactory(sslSocketFactory, tm)
               .dns(zitiDns)
-              .cookieJar(new ReactCookieJarContainer());
+              .cookieJar(new ReactCookieJarContainer())
+              .addInterceptor(new Interceptor() {
+                @Override
+                public Response intercept(Chain chain) throws IOException {
+                  // chain = chain.withReadTimeout(5, TimeUnit.MINUTES);
+                  Request req = chain.request();
+                  Log.i("ziti-rn", String.format("requesting  %s %s (to %d)", req.method(), req.url(), chain.connectTimeoutMillis()));
+                  Response resp = chain.proceed(req);
+                  Log.i("ziti-rn", String.format("resp %s", resp));
+                  return resp;
+                }
+              });
 
       return builder.build();
     }

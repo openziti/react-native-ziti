@@ -1,3 +1,6 @@
+require 'json'
+
+package = JSON.parse(File.read(File.join(__dir__, '../package.json')))
 
 Pod::Spec.new do |s|
   s.name         = "RNZiti"
@@ -6,7 +9,7 @@ Pod::Spec.new do |s|
   s.description  = <<-DESC
                   RNZiti
                    DESC
-  s.homepage     = ""
+  s.homepage     = package['homepage']
   s.license      = "MIT"
   # s.license      = { :type => "MIT", :file => "FILE_LICENSE" }
   s.author             = { "author" => "author@domain.cn" }

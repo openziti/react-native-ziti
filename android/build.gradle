@@ -2,22 +2,23 @@
 buildscript {
     repositories {
         jcenter()
+        google()
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:1.3.1'
+        classpath 'com.android.tools.build:gradle:3.5.3'
     }
 }
 
 apply plugin: 'com.android.library'
 
 android {
-    compileSdkVersion 26
+    compileSdkVersion 29
     buildToolsVersion "23.0.1"
 
     defaultConfig {
-        minSdkVersion 16
-        targetSdkVersion 26
+        minSdkVersion 26
+        targetSdkVersion 29
         versionCode 1
         versionName "1.0"
     }
@@ -28,15 +29,20 @@ android {
 
 repositories {
     mavenCentral()
-    maven { url = "https://netfoundry.jfrog.io/netfoundry/ziti-maven" }
+    jcenter()
 }
 
 dependencies {
-    compile 'com.facebook.react:react-native:+'
+    implementation 'com.facebook.react:react-native:+'
 
-    def zitiVer = "0.9.1"
-    implementation "io.netfoundry.ziti:ziti:${zitiVer}"
-    implementation "io.netfoundry.ziti:ziti-android:${zitiVer}@aar"
+    def zitiVer  = '0.14.1'
+    implementation("org.openziti:ziti-android:${zitiVer}@aar") {
+      transitive = true
+    }
+
+    implementation("com.noveogroup.android:android-logger:1.3.6")
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:1.3.72"
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.8'
 
 }
   
